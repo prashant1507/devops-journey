@@ -1,6 +1,6 @@
 # Use Cases
 
-### Table of COntents
+### Table of Contents
 
 1. [Multi-Cloud Infrastructure Management](#1-multi-cloud-infrastructure-management)
 2. [Infrastructure as Code for a Web Application](#2-infrastructure-as-code-for-a-web-application)
