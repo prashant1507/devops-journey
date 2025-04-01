@@ -153,7 +153,8 @@ terraform destroy # Destroy resources
 ```
 
 ## Notes
-- Refer Useful Notes and Info: [Useful_Notes](resources/Useful_Notes.md)
+- Refer Useful Notes and Info: [Useful Info and Questions](resources/Notes.md)
+- Refer use cases: [Use_Cases.md](resources/use_cases.md)
 - Modify `terraform.tfvars` for specific configurations.
 - AMI used as below:
    - dev: ami-084568db4383264d4
