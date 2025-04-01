@@ -1,7 +1,13 @@
 # Useful Info and Questions
 
+### Table of Contents
+1. [Useful Commands](#useful-commands)
+2. [Notes](#notes)
+3. [Questions](#questions)
 
-## Useful Commands
+---
+
+### Useful Commands
 #### Workspace
 ``` sh
 terradorm workspace                    # Command related to workspace
@@ -12,7 +18,6 @@ terraform workspace delete <workspace> # Delete a specific workspace
 terraform workspace show               # Display the current workspace
 terraform workspace default            # Switch to the default workspace
 ```
-
 
 #### Terraform Commands
 ```sh
@@ -28,20 +33,16 @@ terraform graph    # Generate a visual representation of the configuration
 terraform refresh  # Update the state file with real-world resources
 ```
 
----
 
-## Notes
+### Notes
 - Environment variables should have the prefix TF_VAR_ to be automatically picked up by Terraform's variable.tf: `export TL_VAR_foo=hello`
 - The etag attribute is used in the aws_s3_object resource to ensure files are uploaded only if they change: `etag = filemd5("./resources/dummy-file.txt")`
 
----
 
-## Questions
+### Questions
 ### **1. What is Terraform?**
 **Q:** What is Terraform?  
 **A:** Terraform is an open-source infrastructure as code (IaC) tool that allows you to define, provision, and manage infrastructure using configuration files. It supports cloud providers like AWS, Azure, Google Cloud, and more. Terraform creates, updates, and manages infrastructure resources in a safe, repeatable manner.
-
----
 
 ### **2. What is a Provider in Terraform?**
 **Q:** What is a provider in Terraform?  
@@ -53,8 +54,6 @@ provider "aws" {
   region = "us-west-2"
 }
 ```
-
----
 
 ### **3. What are Terraform Resources?**
 **Q:** What are Terraform resources?  
@@ -68,31 +67,26 @@ resource "aws_instance" "example" {
 }
 ```
 
----
 
 ### **4. What is the purpose of `terraform init`?**
 **Q:** What does the `terraform init` command do?  
 **A:** `terraform init` initializes a Terraform working directory. It downloads the provider plugins required for the configuration, initializes the backend (for state storage), and prepares the directory for further Terraform commands.
 
----
 
 ### **5. What is a Terraform State?**
 **Q:** What is Terraform state?  
 **A:** Terraform state is the mechanism by which Terraform tracks infrastructure it manages. State is used to map your configuration to real-world resources. Terraform saves this state in a file called `terraform.tfstate` by default.
 
----
 
 ### **6. What is `terraform apply`?**
 **Q:** What does the `terraform apply` command do?  
 **A:** `terraform apply` is used to apply changes to your infrastructure based on your configuration files. It calculates the differences (a "plan") and applies the changes to reach the desired state. You are usually prompted to confirm the changes before they are applied.
 
----
 
 ### **7. What is `terraform plan`?**
 **Q:** What does the `terraform plan` command do?  
 **A:** `terraform plan` shows what changes will be made to your infrastructure when you run `terraform apply`. It helps you review the changes Terraform will make before actually applying them.
 
----
 
 ### **8. What is a Terraform Module?**
 **Q:** What is a Terraform module?  
@@ -106,7 +100,6 @@ module "vpc" {
 }
 ```
 
----
 
 ### **9. How to use Variables in Terraform?**
 **Q:** How do you define and use variables in Terraform?  
@@ -123,7 +116,6 @@ resource "aws_instance" "example" {
 }
 ```
 
----
 
 ### **10. What is a Terraform Output?**
 **Q:** What is an output in Terraform?  
@@ -136,7 +128,6 @@ output "instance_public_ip" {
 }
 ```
 
----
 
 ### **11. What is the `depends_on` argument?**
 **Q:** What does the `depends_on` argument do?  
@@ -153,7 +144,6 @@ resource "aws_instance" "example" {
 }
 ```
 
----
 
 ### **12. How do I handle credentials in Terraform?**
 **Q:** How can I set AWS credentials for Terraform?  
@@ -174,7 +164,6 @@ resource "aws_instance" "example" {
    }
    ```
 
----
 
 ### **13. How do I handle remote backends in Terraform?**
 **Q:** What is a remote backend in Terraform?  
@@ -193,7 +182,6 @@ terraform {
 }
 ```
 
----
 
 ### **14. What is a `terraform workspace`?**
 **Q:** What is a workspace in Terraform?  
@@ -214,8 +202,6 @@ terraform {
   terraform workspace select dev
   ```
 
----
-
 ### **15. How to handle version control in Terraform?**
 **Q:** How do I manage Terraform configurations in version control?  
 **A:** You should **never** commit `terraform.tfstate` or `terraform.tfstate.backup` files to version control. Use a `.gitignore` file to exclude them:
@@ -223,8 +209,6 @@ terraform {
 *.tfstate
 *.tfstate.backup
 ```
-
----
 
 ### **16. How to use `terraform import`?**
 **Q:** What is `terraform import`?  
@@ -234,8 +218,6 @@ Example:
 ```bash
 terraform import aws_instance.example i-0abcd1234efgh5678
 ```
-
----
 
 ### **17. How to define conditional logic in Terraform?**
 **Q:** How can I use conditions in Terraform?  
@@ -250,8 +232,6 @@ resource "aws_instance" "example" {
 }
 ```
 
----
-
 ### **18. How to apply a plan without confirmation?**
 **Q:** How do I apply a Terraform plan without confirmation?  
 **A:** You can use the `-auto-approve` flag to skip confirmation prompts:
@@ -259,16 +239,12 @@ resource "aws_instance" "example" {
 terraform apply -auto-approve
 ```
 
----
-
 ### **19. How to handle multiple environments with Terraform?**
 **Q:** How do I manage multiple environments (like dev, staging, prod) with Terraform?  
 **A:** You can use:
 1. **Workspaces**: Use different workspaces for each environment.
 2. **Module-based configurations**: Use modules and `-var-file` to customize configurations for different environments.
 3. **Backend configurations**: Use different state backends for each environment.
-
----
 
 ### **20. What are Terraform provisioners?**
 **Q:** What are Terraform provisioners?  
@@ -289,17 +265,11 @@ resource "aws_instance" "example" {
 }
 ```
 
----
-
 ### **21. What is the `terraform destroy` command?**
 **Q:** What does the `terraform destroy` command do?  
 **A:** `terraform destroy` is used to delete all the infrastructure managed by your Terraform configuration. It will remove all resources defined in your configuration files.
 
----
-
 ### **22. What is the Terraform Data?**
 **Q:** What is the Terraform Data
 **A:** Terraform Data are used to fetch or query information about existing resources that are not managed by Terraform or to obtain information about the infrastructure outside the current Terraform configuration
-
----
 

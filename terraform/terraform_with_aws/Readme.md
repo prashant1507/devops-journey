@@ -1,9 +1,29 @@
 # Terraform with AWS
 
-## Overview
+### Table of Contents
+1. [Overview](#overview)
+2. [Folder Structure](#folder-structure)
+3. [Prerequisites](#prerequisites)
+4. [Using Terraform Workspaces](#using-terraform-workspaces)
+5. [Modules Overview](#modules-overview)
+   - [VPC Module](#vpc-module)
+   - [EC2 Module](#ec2-module)
+   - [S3 Module](#s3-module)
+   - [IAM Module](#iam-module)
+6. [Running Terraform](#running-terraform)
+7. [Notes](#notes)
+8. [Conclusion](#conclusion)
+9. [Author](#author)
+10. [References](#references)
+
+---
+
+### Overview
 This repository contains Terraform configurations to provision and manage AWS resources using Infrastructure as Code (IaC). The project is structured into multiple modules including VPC, EC2, S3, IAM, and Load Balancing, making it easy to manage and scale AWS infrastructure.
 
-## Folder Structure
+---
+
+### Folder Structure
 ```
 terraform_with_aws/
 │── modules/
@@ -37,7 +57,9 @@ terraform_with_aws/
 │── README.md
 ```
 
-## Prerequisites
+---
+
+### Prerequisites
 1. **AWS Account** - Login to AWS and generate credentials.
 2. **Terraform Installed** - Install Terraform on your local machine.
 3. **AWS Credentials** - Set environment variables for authentication:
@@ -49,15 +71,18 @@ terraform_with_aws/
    ```sh
    terraform init
    ```
+---
 
-## Using Terraform Workspaces
+### Using Terraform Workspaces
 Terraform supports multiple environments using workspaces. To create or select a workspace:
 ```sh
 terraform workspace new dev
 terraform workspace select dev
 ```
 
-## Modules Overview
+---
+
+### Modules Overview
 ### **VPC Module** (Refer to [vpc-resource-map.png](./resources/vpc-resource-map.png))
 ![vpc-resource-map.png](resources/vpc-resource-map.png)
 1. **Create VPC:** Provision a new Virtual Private Cloud (VPC) for networking resources.
@@ -136,8 +161,9 @@ terraform workspace select dev
 
 8. **Verify if the File is Uploaded in the S3 Folder:** Confirm that the uploaded file appears in the specified S3 bucket folder.  
 
+---
 
-## Running Terraform
+### Running Terraform
 ```sh
 export AWS_ACCESS_KEY_ID=your_access_key
 export AWS_SECRET_ACCESS_KEY=your_secret_key
@@ -148,10 +174,11 @@ terraform plan    # Preview changes
 terraform apply   # Apply changes
 terraform destroy # Destroy resources
 ```
+---
 
-## Notes
+### Notes
 - Refer Useful Notes and Info: [Useful Info and Questions](resources/Notes.md)
-- Refer use cases: [Use_Cases.md](resources/use_cases.md)
+- Refer use cases: [Use_Cases.md](resources/Use_Cases.md)
 - Modify `terraform.tfvars` for specific configurations.
 - AMI used as below:
    - dev: ami-084568db4383264d4
@@ -163,14 +190,19 @@ terraform destroy # Destroy resources
    - default: ami-0779caf41f9ba54f0
       - Debian 12 (HVM), EBS General Purpose (SSD) Volume Type. Community developed free GNU/Linux distribution
 
+---
 
-## Conclusion
+### Conclusion
 This repository provides a structured approach to deploying AWS infrastructure using Terraform.
 
-## Author
+---
+
+### Author
 This project is created for Terraform practice and learning purposes.
 
-## References
+---
+
+### References
 - **Terraform Course Playlist:** [Terraform Zero to Hero - YouTube](https://youtube.com/playlist?list=PLdpzxOOAlwvI0O4PeKVV1-yJoX2AqIWuf&si=Yv0N00EHJc0FAaCT)
 - **Course Git Notes:** [Terraform Zero to Hero - GitHub](https://github.com/iam-veeramalla/terraform-zero-to-hero)
 - **Terraform AWS Documentation:** [AWS Provider Documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
