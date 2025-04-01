@@ -1,5 +1,19 @@
 # Use Cases
 
+### Table of COntents
+
+1. [Multi-Cloud Infrastructure Management](#1-multi-cloud-infrastructure-management)
+2. [Infrastructure as Code for a Web Application](#2-infrastructure-as-code-for-a-web-application)
+3. [Continuous Deployment Pipeline](#3-continuous-deployment-pipeline)
+4. [Auto Scaling with Load Balancer](#4-auto-scaling-with-load-balancer)
+5. [Backup Strategy Using AWS S3](#5-backup-strategy-using-aws-s3)
+6. [Managing DNS Records with Route 53](#6-managing-dns-records-with-route-53)
+7. [Infrastructure with Auto-Scaling for a Database](#7-infrastructure-with-auto-scaling-for-a-database)
+8. [Creating a Secure VPC with Network Segmentation](#8-creating-a-secure-vpc-with-network-segmentation)
+9. [Setting Up CI/CD Pipeline on AWS](#9-setting-up-cicd-pipeline-on-aws)
+
+---
+
 ### **1. Multi-Cloud Infrastructure Management**
 **Q:** How can I manage infrastructure across multiple cloud providers (e.g., AWS, Azure, GCP) using Terraform?  
 **A:** Terraform allows you to define infrastructure for multiple cloud providers in a single configuration file. By defining separate providers for each cloud, you can manage resources across AWS, Azure, and GCP seamlessly.
