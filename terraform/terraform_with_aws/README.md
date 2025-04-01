@@ -163,6 +163,27 @@ terraform workspace select dev
 
 8. **Verify if the File is Uploaded in the S3 Folder:** Confirm that the uploaded file appears in the specified S3 bucket folder.  
 
+
+### **Load Balancer Module**
+1. **Create an Internal Application Load Balancer (ALB)**
+
+2. **Create a Target Group:** Listens on **port 80** with **HTTP protocol**
+
+3. **Create an ALB Listener:** Listens on **port 80 (HTTP)**. Uses **"forward" action** to send traffic to the **Target Group**.
+
+4. **Create a Launch Template**
+
+5. **Create an Auto Scaling Group (ASG)**
+    - **`aws_autoscaling_group "asg"`** creates an ASG with:
+      - **Min instances:** `1`
+      - **Max instances:** `3`
+      - **Desired capacity:** `2`
+    - Uses the **private subnets (`var.private_subnets`)**.
+    - Configured **health check type: `ELB`** (Uses ALB health checks).
+    - Health check grace period: **30 seconds**.
+    - **Automatically registers instances** with the **ALB Target Group**.
+    - Uses the **Launch Template** to create EC2 instances.
+
 ---
 
 ### Running Terraform

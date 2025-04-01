@@ -17,7 +17,7 @@ resource "aws_vpc" "vpc" {
 
 # Create a Security Group attached to the VPC
 resource "aws_security_group" "security_group" {
-  name        = "Security Group"
+  name        = "Security_Group"
   description = "Allow inbound traffic on ports 22 (SSH), 80 (HTTP), 443 (HTTPS)"
   vpc_id      = aws_vpc.vpc.id
 

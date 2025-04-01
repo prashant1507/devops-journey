@@ -21,3 +21,15 @@ output "public_subnet_1a" {
   value       = aws_subnet.public_subnet_1a.id
   description = "The ID of the public subnet in availability zone 1a."
 }
+
+# Private Subnet 1b ID
+output "private_subnet_1b" {
+  value       = aws_subnet.private_subnet_1b.id
+  description = "The ID of the private subnet in availability zone 1b."
+}
+
+# Public Subnet 1b ID
+output "public_subnet_1b" {
+  value       = aws_subnet.public_subnet_1b.id
+  description = "The ID of the public subnet in availability zone 1b."
+}

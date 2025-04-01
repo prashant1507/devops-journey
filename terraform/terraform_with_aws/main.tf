@@ -42,6 +42,11 @@ module "iam" {
 
 # Load Balancer Module
 module "load_balancer" {
-  source         = "./modules/load_balancer"
-
+  source            = "./modules/load_balancer"
+  security_group_id = module.vpc.security_group_id
+  private_subnets   = [module.vpc.private_subnet_1a, module.vpc.private_subnet_1b]
+  vpc_id            = module.vpc.vpc_id
+  ami               = lookup(var.environment_type, terraform.workspace, "ami-0779caf41f9ba54f0")
+  instance_type     = "t2.micro"
+  depends_on        = [module.vpc]
 }
