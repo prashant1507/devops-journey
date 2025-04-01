@@ -1,0 +1,6 @@
+terraform/*/.terraform
+terraform/*/.terraform.lock.hcl
+terraform/*/terraform.tfstate
+terraform/*/terraform.tfstate.backup
+.DS_Store
+terraform/*/resources/dummy-file-from-s3.txt
