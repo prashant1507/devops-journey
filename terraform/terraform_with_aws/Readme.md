@@ -142,6 +142,10 @@ terraform workspace select dev
 
 ## Running Terraform
 ```sh
+export AWS_ACCESS_KEY_ID=your_access_key
+export AWS_SECRET_ACCESS_KEY=your_secret_key
+terraform init
+terraform workspace new <workspace> # Create workspace [dev, stage, prod], add more env in [variables.tf]
 terraform workspace select <workspace> # Switch between environments
 terraform plan    # Preview changes
 terraform apply   # Apply changes
@@ -150,7 +154,54 @@ terraform destroy # Destroy resources
 
 ## Notes
 - Modify `terraform.tfvars` for specific configurations.
-- Use `terraform workspace select <workspace>` to switch between environments.
+- AMI used as below:
+   - dev: ami-084568db4383264d4
+      - Ubuntu Server 24.04 LTS (HVM), SSD Volume Type
+   - stage: ami-0c15e602d3d6c6c4a
+      - Red Hat Enterprise Linux version 9 (HVM), EBS General Purpose (SSD) Volume Type,
+   - prod: ami-04b7f73ef0b798a0f
+      - SUSE Linux Enterprise Server 15 Service Pack 6 (HVM), EBS General Purpose (SSD) Volume Type. Amazon EC2 AMI Tools preinstalled.
+   - default: ami-0779caf41f9ba54f0
+      - Debian 12 (HVM), EBS General Purpose (SSD) Volume Type. Community developed free GNU/Linux distribution
+
 
 ## Conclusion
 This repository provides a structured approach to deploying AWS infrastructure using Terraform.
+
+## Author
+This project is created for Terraform practice and learning purposes.
+
+## References
+- **Course Playlist:** [Terraform Zero to Hero - YouTube](https://youtube.com/playlist?list=PLdpzxOOAlwvI0O4PeKVV1-yJoX2AqIWuf&si=Yv0N00EHJc0FAaCT)
+- **Course Git Notes:** [Terraform Zero to Hero - GitHub](https://github.com/iam-veeramalla/terraform-zero-to-hero)
+- **Terraform AWS Documentation:** [AWS Provider Documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
+- **Terraform VSphere Documentation:** [VSphere Provider Documentation](https://registry.terraform.io/providers/hashicorp/vsphere/latest/docs)
+- **Terraform Language Documentation:** [Terraform Language](https://developer.hashicorp.com/terraform/language)
+- **Projects with AWS:** [AWS Projects - YouTube](https://youtube.com/playlist?list=PLdpzxOOAlwvLNOxX0RfndiYSt1Le9azze&si=iHn7rWgUDeXbOrd8)
+
+
+## Useful Commands
+
+### Workspace
+``` sh
+terraform workspace new <workspace>    # Create a new workspace
+terraform workspace select <workspace> # Switch between environments
+terraform workspace                    # List all available workspaces
+terraform workspace delete <workspace> # Delete a specific workspace
+terraform workspace show               # Display the current workspace
+terraform workspace default            # Switch to the default workspace
+```
+
+### Terraform Commands
+```sh
+terraform init     # Initialize a Terraform working directory
+terraform validate # Validate the Terraform configuration files
+terraform plan     # Preview changes before applying
+terraform apply    # Apply the changes required to reach the desired state
+terraform destroy  # Destroy the Terraform-managed infrastructure
+terraform fmt      # Format Terraform configuration files
+terraform output   # Read an output variable from a state file
+terraform state    # Advanced state management commands
+terraform graph    # Generate a visual representation of the configuration
+terraform refresh  # Update the state file with real-world resources
+```

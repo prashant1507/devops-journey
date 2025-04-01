@@ -1,7 +1,6 @@
 variable "ami" {
   description = "The Amazon Machine Image (AMI) ID to use for the EC2 instance."
   type        = string
-  default     = "ami-084568db4383264d4"  # Ubuntu Server 24.04 LTS (HVM), SSD Volume Type
 }
 
 variable "instance_type" {
