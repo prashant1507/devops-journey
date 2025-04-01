@@ -6,7 +6,7 @@ resource "aws_lb" "create_alb" {
   security_groups    = [var.security_group_id]
   subnets            = var.private_subnets
 
-  enable_deletion_protection = true # Prevent accidental deletion
+  enable_deletion_protection = false # true: Prevent accidental deletion.
   idle_timeout               = 60   # Set idle timeout in seconds
   tags = {
     Name = "Application-Load-Balancer-Test"
@@ -75,7 +75,7 @@ resource "aws_autoscaling_group" "create_asg" {
   name                = "test-asg"
   min_size            = 1
   max_size            = 3
-  desired_capacity    = 2
+  desired_capacity    = 1
   vpc_zone_identifier = var.private_subnets
   health_check_type   = "ELB"
   health_check_grace_period = 300
