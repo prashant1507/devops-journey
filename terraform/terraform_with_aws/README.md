@@ -49,6 +49,8 @@ terraform_with_aws/
 │── resources/
 │   ├── vpc-resource-map.png
 │   ├── dummy-file.txt
+│   ├── Notes.md
+│   ├── Use_Cases.md
 │── main.tf
 │── variables.tf
 │── outputs.tf
@@ -60,7 +62,7 @@ terraform_with_aws/
 ---
 
 ### Prerequisites
-1. **AWS Account** - Login to AWS and generate credentials.
+1. **AWS Account** - Log in to AWS and generate credentials.
 2. **Terraform Installed** - Install Terraform on your local machine.
 3. **AWS Credentials** - Set environment variables for authentication:
    ```sh
