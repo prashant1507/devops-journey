@@ -294,3 +294,12 @@ resource "aws_instance" "example" {
 ### **21. What is the `terraform destroy` command?**
 **Q:** What does the `terraform destroy` command do?  
 **A:** `terraform destroy` is used to delete all the infrastructure managed by your Terraform configuration. It will remove all resources defined in your configuration files.
+
+---
+
+### **22. What is the Terraform Data?**
+**Q:** What is the Terraform Data
+**A:** Terraform Data are used to fetch or query information about existing resources that are not managed by Terraform or to obtain information about the infrastructure outside the current Terraform configuration
+
+---
+

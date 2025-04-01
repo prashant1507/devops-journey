@@ -26,12 +26,9 @@ terraform_with_aws/
 │       ├── main.tf
 │       ├── variables.tf
 │       ├── outputs.tf
-│── environments/
-│   ├── dev/
-│   ├── staging/
-│   ├── prod/
 │── resources/
 │   ├── vpc-resource-map.png
+│   ├── dummy-file.txt
 │── main.tf
 │── variables.tf
 │── outputs.tf
@@ -174,10 +171,10 @@ This repository provides a structured approach to deploying AWS infrastructure u
 This project is created for Terraform practice and learning purposes.
 
 ## References
-- **Course Playlist:** [Terraform Zero to Hero - YouTube](https://youtube.com/playlist?list=PLdpzxOOAlwvI0O4PeKVV1-yJoX2AqIWuf&si=Yv0N00EHJc0FAaCT)
+- **Terraform Course Playlist:** [Terraform Zero to Hero - YouTube](https://youtube.com/playlist?list=PLdpzxOOAlwvI0O4PeKVV1-yJoX2AqIWuf&si=Yv0N00EHJc0FAaCT)
 - **Course Git Notes:** [Terraform Zero to Hero - GitHub](https://github.com/iam-veeramalla/terraform-zero-to-hero)
 - **Terraform AWS Documentation:** [AWS Provider Documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
 - **Terraform VSphere Documentation:** [VSphere Provider Documentation](https://registry.terraform.io/providers/hashicorp/vsphere/latest/docs)
 - **Terraform Language Documentation:** [Terraform Language](https://developer.hashicorp.com/terraform/language)
-- **Projects with AWS:** [AWS Projects - YouTube](https://youtube.com/playlist?list=PLdpzxOOAlwvLNOxX0RfndiYSt1Le9azze&si=iHn7rWgUDeXbOrd8)
+- **AWS Course Playlist:** [AWS Projects - YouTube](https://youtube.com/playlist?list=PLdpzxOOAlwvLNOxX0RfndiYSt1Le9azze&si=iHn7rWgUDeXbOrd8)
 
