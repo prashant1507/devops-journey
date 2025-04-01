@@ -40,3 +40,8 @@ module "iam" {
   depends_on     = [module.s3]
 }
 
+# Load Balancer Module
+module "load_balancer" {
+  source         = "./modules/load_balancer"
+
+}
