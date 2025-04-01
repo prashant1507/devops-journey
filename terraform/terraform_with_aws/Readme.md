@@ -1,0 +1,156 @@
+# Terraform with AWS
+
+## Overview
+This repository contains Terraform configurations to provision and manage AWS resources using Infrastructure as Code (IaC). The project is structured into multiple modules including VPC, EC2, S3, IAM, and Load Balancing, making it easy to manage and scale AWS infrastructure.
+
+## Folder Structure
+```
+terraform_with_aws/
+│── modules/
+│   ├── vpc/
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   ├── ec2/
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   ├── outputs.tf
+│   ├── s3/
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   ├── outputs.tf
+│   ├── iam/
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   ├── outputs.tf
+│   ├── load_balancer/
+│       ├── main.tf
+│       ├── variables.tf
+│       ├── outputs.tf
+│── environments/
+│   ├── dev/
+│   ├── staging/
+│   ├── prod/
+│── resources/
+│   ├── vpc-resource-map.png
+│── main.tf
+│── variables.tf
+│── outputs.tf
+│── terraform.tfvars
+│── provifers.tf
+│── README.md
+```
+
+## Prerequisites
+1. **AWS Account** - Login to AWS and generate credentials.
+2. **Terraform Installed** - Install Terraform on your local machine.
+3. **AWS Credentials** - Set environment variables for authentication:
+   ```sh
+   export AWS_ACCESS_KEY_ID=your_access_key
+   export AWS_SECRET_ACCESS_KEY=your_secret_key
+   ```
+4. **Initialize Terraform**
+   ```sh
+   terraform init
+   ```
+
+## Using Terraform Workspaces
+Terraform supports multiple environments using workspaces. To create or select a workspace:
+```sh
+terraform workspace new dev
+terraform workspace select dev
+```
+
+## Modules Overview
+### **VPC Module** (Refer to [vpc-resource-map.png](./resources/vpc-resource-map.png))
+![vpc-resource-map.png](resources/vpc-resource-map.png)
+1. **Create VPC:** Provision a new Virtual Private Cloud (VPC) for networking resources.
+
+2. **Create Security Group**  
+   - Define a security group with the following rules:
+     - **Ingress Rules**: Allow incoming traffic on ports 22 (SSH), 80 (HTTP), and 443 (HTTPS).
+     - **Egress Rules**: Allow all outbound traffic to any destination and for any protocol.
+
+3. **Create Subnets:** Create **2 public subnets** and **2 private subnets** across multiple availability zones for high availability and fault tolerance.
+
+4. **Create Internet Gateway:** Provision an internet gateway to provide internet access to the public subnet resources.
+
+5. **Create Route Tables**  
+   - Define **1 route table** for the public subnets and **2 route tables** for the private subnets.
+   - Associate route tables with appropriate subnets for traffic management.
+
+6. **Attach Internet Gateway to Public Route Table:** Attach the internet gateway to the public route table to ensure that instances in the public subnet can access the internet.
+
+7. **Set Route Table Association:** Associate the appropriate route tables to the respective subnets, ensuring proper routing within the VPC.
+
+8. **Create VPC for S3 Endpoint:** Create a dedicated VPC endpoint for Amazon S3, enabling secure communication between the VPC and S3 without the need for an internet gateway.
+
+9. **Modify the VPC Endpoint:** Modify the VPC endpoint to add the private route tables to the S3 endpoint, allowing instances in the private subnets to access S3 securely.
+
+### **EC2 Module**
+1. **Create EC2 Instances Using `count = X` in [main.tf](main.tf)**  
+   - Provision **X number of EC2 instances** by utilizing the `count` parameter in [main.tf](main.tf) within the EC2 module. This allows dynamic scaling of instances based on the specified count value.
+
+2. **Create SSH Key Pair**  
+   - Generate an SSH key pair to allow secure SSH access to the EC2 instances. The key pair will be used when connecting to the instances remotely.
+
+3. **Create EC2 Instance with Disabled Public IP**  
+   - By default, EC2 instances are created with **public IP addresses disabled**.  
+   - To enable public IP assignment for an EC2 instance, update the `associate_public_ip_address` setting in [modules/ec2/main.tf](modules/ec2/main.tf) under the `aws_instance.ec2_instance` resource. Set `associate_public_ip_address = true` if public IPs are required.
+
+4. **Create Elastic IP (EIP)**  
+   - Optionally, create an **Elastic IP** by uncommenting the respective lines in [modules/ec2/main.tf](modules/ec2/main.tf). An Elastic IP is a static IP that can be associated with an EC2 instance for consistent public access.
+
+5. **Assign Elastic IP to EC2 Instance**  
+   - To assign the created Elastic IP to an EC2 instance, uncomment the relevant lines in [modules/ec2/main.tf](modules/ec2/main.tf). This allows the EC2 instance to be associated with a static IP address that persists even after instance restarts.
+
+### **S3 Module**
+1. **Create S3 Bucket:** Provision a new S3 bucket to store and manage objects securely.  
+
+2. **Enable Versioning:** Activate versioning on the bucket to retain previous versions of objects, providing protection against accidental deletions or overwrites.  
+
+3. **Block Public Access:**  Enforce security by blocking all public access to the bucket, ensuring that objects are not exposed to unauthorized users.  
+
+4. **Create Folder in S3 Bucket:** Organize content by creating structured folders within the bucket for efficient data management.  
+
+5. **Upload File:** Upload files to the specified folder in the S3 bucket for storage and retrieval.  
+
+6. **Refresh Terraform State:** Update the Terraform state to reflect the latest changes after uploading files, ensuring consistency between the infrastructure and state file.  
+
+7. **List Objects in a Specific Folder:** Retrieve a list of all objects within a particular folder inside the S3 bucket using Terraform's data source feature.  
+
+8. **List All Objects in the S3 Bucket:** Fetch details of all objects stored in the entire S3 bucket for inventory or auditing purposes.  
+
+9. **Download a Specific File from the S3 Bucket:** Retrieve a particular file from the S3 bucket for local use or further processing.  
+
+### **IAM Module**
+1. **Create IAM User Group:** Define a user group to manage permissions collectively for multiple IAM users.  
+
+2. **Attach Predefined Policy to IAM User Group:** Grant the IAM user group full access to Amazon S3 by attaching the `AmazonS3FullAccess` policy.  
+
+3. **Create IAM User:** Provision a new IAM user for secure access to AWS resources.  
+
+4. **Attach a Login Profile (AWS Management Console Access):** Enable AWS Management Console login by attaching a login profile to the IAM user.  
+
+5. **Add IAM User to Group:** Assign the IAM user to the previously created IAM group to inherit permissions.  
+
+6. **Grant Full Access to S3 for IAM User:** Ensure the IAM user has full access to Amazon S3, either through direct policies or inherited group permissions.  
+
+7. **Upload a File to the Folder in the S3 Bucket:** Test S3 access by uploading a file to a specific folder within the bucket.  
+
+8. **Verify if the File is Uploaded in the S3 Folder:** Confirm that the uploaded file appears in the specified S3 bucket folder.  
+
+
+## Running Terraform
+```sh
+terraform workspace select <workspace> # Switch between environments
+terraform plan    # Preview changes
+terraform apply   # Apply changes
+terraform destroy # Destroy resources
+```
+
+## Notes
+- Modify `terraform.tfvars` for specific configurations.
+- Use `terraform workspace select <workspace>` to switch between environments.
+
+## Conclusion
+This repository provides a structured approach to deploying AWS infrastructure using Terraform.
