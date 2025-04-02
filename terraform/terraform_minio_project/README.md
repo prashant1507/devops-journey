@@ -54,21 +54,19 @@ terraform_minio_project/
 ### **MinIO Module**
 1. **Create Bucket:** Provision a new bucket to store and manage objects securely.  
 
-2. **Enable Versioning:** Activate versioning on the bucket to retain previous versions of objects, providing protection against accidental deletions or overwrites.  
+2. **Enable Versioning:** Activate versioning on the bucket to retain previous versions of objects, providing protection against accidental deletions or overwrites.   
 
-3. **Block Public Access:**  Enforce security by blocking all public access to the bucket, ensuring that objects are not exposed to unauthorized users.  
+3. **Create Folder in Bucket:** Organize content by creating structured folders within the bucket for efficient data management.  
 
-4. **Create Folder in Bucket:** Organize content by creating structured folders within the bucket for efficient data management.  
+4. **Upload File:** Upload files to the specified folder in the bucket for storage and retrieval.  
 
-5. **Upload File:** Upload files to the specified folder in the bucket for storage and retrieval.  
+5. **Refresh Terraform State:** Update the Terraform state to reflect the latest changes after uploading files, ensuring consistency between the infrastructure and state file.  
 
-6. **Refresh Terraform State:** Update the Terraform state to reflect the latest changes after uploading files, ensuring consistency between the infrastructure and state file.  
+6. **List Objects in a Specific Folder:** Retrieve a list of all objects within a particular folder inside the bucket using Terraform's data source feature.  
 
-7. **List Objects in a Specific Folder:** Retrieve a list of all objects within a particular folder inside the bucket using Terraform's data source feature.  
+7. **List All Objects in the Bucket:** Fetch details of all objects stored in the entire bucket for inventory or auditing purposes.  
 
-8. **List All Objects in the Bucket:** Fetch details of all objects stored in the entire bucket for inventory or auditing purposes.  
-
-9. **Download a Specific File from the Bucket:** Retrieve a particular file from the bucket for local use or further processing.  
+8. **Download a Specific File from the Bucket:** Retrieve a particular file from the bucket for local use or further processing.  
 
 ---
 

@@ -8,3 +8,4 @@ terraform/*/.terraform.tfstate.lock.info
 terraform/*/resources/dummy-file-from-s3.txt
 .idea
 *delete*
+terraform/*/resources/dummy-file-from-minio.txt

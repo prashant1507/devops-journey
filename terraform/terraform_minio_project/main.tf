@@ -3,10 +3,9 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "5.93.0" # Ensure compatibility with AWS provider
+      version = "4.67.0" # For now using this untill find a replace for s3_force_path_style in providers.tf
     }
   }
-
   required_version = ">= 1.5.0" # Specify the minimum Terraform version
 }
 
