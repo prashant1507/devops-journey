@@ -11,7 +11,7 @@ terraform {
   #   key            = "terraform.tfstate"
   #   region         = var.region
   #   encrypt        = true
-  #   dynamodb_table = "ttfstate-dynamodb-table"
+  #   dynamodb_table = "tfstate-dynamodb-table"
   # }
 
 }
