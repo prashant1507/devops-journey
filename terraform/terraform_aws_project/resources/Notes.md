@@ -169,6 +169,10 @@ resource "aws_instance" "example" {
 **Q:** What is a remote backend in Terraform?  
 **A:** A remote backend allows Terraform's state file to be stored remotely, providing better collaboration and state sharing. The state can be stored in an S3 bucket, Azure Storage Account, or other services.
 
+Follow to setup Dynamodb: 
+- https://spacelift.io/blog/terraform-s3-backend
+- https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/getting-started-step-1.html
+
 Example with S3 Backend:
 ```hcl
 terraform {
@@ -180,6 +184,8 @@ terraform {
     dynamodb_table = "terraform-lock-table"
   }
 }
+
+
 ```
 
 

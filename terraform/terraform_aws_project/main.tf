@@ -5,6 +5,15 @@ terraform {
       version = "5.93.0"
     }
   }
+
+  backend "s3" {
+    bucket         = "tfstate-bucket-name"
+    key            = "terraform.tfstate"
+    region         = var.region
+    encrypt        = true
+    dynamodb_table = "ttfstate-dynamodb-table"
+  }
+
 }
 
 # VPC Module

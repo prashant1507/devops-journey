@@ -19,7 +19,7 @@
 ---
 
 ### Overview
-This repository contains Terraform configurations to provision and manage AWS resources using Infrastructure as Code (IaC). The project is structured into multiple modules including VPC, EC2, S3, IAM, and Load Balancing, making it easy to manage and scale AWS infrastructure.
+This repository contains Terraform configurations to provision and manage AWS resources using Infrastructure as Code (IaC). The project is structured into multiple modules including VPC, EC2, S3, IAM, and Load Balancing, making it easy to manage and scale AWS infrastructure. This also elloborates usage of remote backends to allow Terraform's state file to be stored remotely
 
 ---
 
@@ -203,6 +203,8 @@ terraform destroy # Destroy resources
 - Refer Useful Notes and Info: [Useful Info and Questions](resources/Notes.md)
 - Refer use cases: [Use_Cases.md](resources/Use_Cases.md)
 - Modify `terraform.tfvars` for specific configurations.
+- Uncomment `backend` in `main.tf -> terraform` to store tfste file in S3
+   - Follow [link](https://spacelift.io/blog/terraform-s3-backend) to setup bucket and dynamodb_table in AWS
 - AMI used as below:
    - dev: ami-084568db4383264d4
       - Ubuntu Server 24.04 LTS (HVM), SSD Volume Type
