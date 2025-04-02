@@ -2,9 +2,9 @@ terraform/*/.terraform
 terraform/*/.terraform.lock.hcl
 terraform/*/terraform.tfstate
 terraform/*/terraform.tfstate.backup
+terraform/*/terraform.tfstate.d
+terraform/*/.terraform.tfstate.lock.info
 .DS_Store
 terraform/*/resources/dummy-file-from-s3.txt
-terraform/terraform_with_aws/terraform.tfstate.d
 .idea
 *delete*
-terraform/terraform_with_aws/.terraform.tfstate.lock.info

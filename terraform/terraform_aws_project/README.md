@@ -25,7 +25,7 @@ This repository contains Terraform configurations to provision and manage AWS re
 
 ### Folder Structure
 ```
-terraform_with_aws/
+terraform_aws_project/
 │── modules/
 │   ├── vpc/
 │   │   ├── main.tf
