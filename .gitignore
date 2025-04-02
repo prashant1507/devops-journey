@@ -6,5 +6,5 @@ terraform/*/terraform.tfstate.backup
 terraform/*/resources/dummy-file-from-s3.txt
 terraform/terraform_with_aws/terraform.tfstate.d
 .idea
-*delete*
+*delete* 
 terraform/terraform_with_aws/.terraform.tfstate.lock.info
