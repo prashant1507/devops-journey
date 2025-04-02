@@ -14,7 +14,7 @@
  ---
 
 ### Overview
-This repository contains Terraform configurations to provision and manage MinIO resources using Infrastructure as Code (IaC). This also elloborates usage of remote backends to allow Terraform's state file to be stored remotely
+This repository contains Terraform configurations to provision and manage MinIO resources using Infrastructure as Code (IaC).
 
 ---
 
