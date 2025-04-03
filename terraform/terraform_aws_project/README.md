@@ -51,6 +51,7 @@ terraform_aws_project/
 │   ├── dummy-file.txt
 │   ├── Notes.md
 │   ├── Use_Cases.md
+|   ├── Offline-Terraform-Deployment.md
 │── main.tf
 │── variables.tf
 │── outputs.tf
@@ -202,6 +203,7 @@ terraform destroy # Destroy resources
 ### Notes
 - Refer Useful Notes and Info: [Useful Info and Questions](resources/Notes.md)
 - Refer use cases: [Use_Cases.md](resources/Use_Cases.md)
+- Offline Terraform Setup: [Offline-Terraform-Deployment](resources/Offline-Terraform-Deployment.md)
 - Modify `terraform.tfvars` for specific configurations.
 - Uncomment `backend` in `main.tf -> terraform` to store tfste file in S3
    - Follow [link](https://spacelift.io/blog/terraform-s3-backend) to setup bucket and dynamodb_table in AWS
