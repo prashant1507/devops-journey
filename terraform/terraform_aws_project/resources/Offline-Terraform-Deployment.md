@@ -9,16 +9,17 @@ Running Terraform on an offline machine requires downloading all necessary Terra
 Before transferring Terraform to the offline machine, do the following steps on a machine with internet access:
 
 #### Step 1: Download Terraform Binary
-Download the correct Terraform binary for your OS from Terraform Releases.
+- Download the correct Terraform binary for your OS from Terraform Releases.
 
 #### Step 2: Download Terraform Provider Plugins
-To prevent Terraform from downloading providers online, manually download the required provider plugins. Example for AWS provider: `terraform init`
-After initialization, the provider plugins are stored in: `~/.terraform.d/plugin-cache/` or `.terraform/providers/`
-Copy these directories to use them on the offline machine.
+- To prevent Terraform from downloading providers online, manually download the required provider plugins. 
+- Example for AWS provider: `terraform init`
+- After initialization, the provider plugins are stored in: `~/.terraform.d/plugin-cache/` or `.terraform/providers/`
+- Copy these directories to use them on the offline machine.
 
 #### Step 3: Configure Terraform Plugin Cache
-Run: `terraform providers mirror /path/to/local/plugin-cache`
-Copy the `/path/to/local/plugin-cache` folder to the offline machine.
+- Run: `terraform providers mirror /path/to/local/plugin-cache`
+- Copy the `/path/to/local/plugin-cache` folder to the offline machine.
 
 #### Step 4: Transfer to the Offline Machine
 - Copy the following to the offline machine:
