@@ -52,6 +52,7 @@ terraform_aws_project/
 │   ├── Notes.md
 │   ├── Use_Cases.md
 |   ├── Offline-Terraform-Deployment.md
+|   ├── Notes-Terraform-Import.md
 │── main.tf
 │── variables.tf
 │── outputs.tf
@@ -204,8 +205,9 @@ terraform destroy # Destroy resources
 - Refer Useful Notes and Info: [Useful Info and Questions](resources/Notes.md)
 - Refer use cases: [Use_Cases.md](resources/Use_Cases.md)
 - Offline Terraform Setup: [Offline-Terraform-Deployment](resources/Offline-Terraform-Deployment.md)
+- Terraform Import related questions, use cases, hands-on: [Terraform-Imports](resources/Notes-Terraform-Import.md)
 - Modify `terraform.tfvars` for specific configurations.
-- Uncomment `backend` in `main.tf -> terraform` to store tfste file in S3
+- Uncomment `backend` in `main.tf -> terraform` to store tfstate file in S3
    - Follow [link](https://spacelift.io/blog/terraform-s3-backend) to setup bucket and dynamodb_table in AWS
 - AMI used as below:
    - dev: ami-084568db4383264d4

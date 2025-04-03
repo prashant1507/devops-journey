@@ -188,7 +188,6 @@ terraform {
 
 ```
 
-
 ### **14. What is a `terraform workspace`?**
 **Q:** What is a workspace in Terraform?  
 **A:** A workspace is an isolated environment for Terraform configurations. It allows you to have different state files for the same configuration, useful for managing different environments (e.g., `dev`, `staging`, `prod`).
@@ -207,7 +206,7 @@ terraform {
   ```bash
   terraform workspace select dev
   ```
-
+  
 ### **15. How to handle version control in Terraform?**
 **Q:** How do I manage Terraform configurations in version control?  
 **A:** You should **never** commit `terraform.tfstate` or `terraform.tfstate.backup` files to version control. Use a `.gitignore` file to exclude them:
