@@ -126,13 +126,15 @@ This repository provides a structured approach to managing MinIO resources using
 
 ---
 
+### References
+- **MinIO Documentation**: [MinIO Provider Documentation](https://registry.terraform.io/providers/aminueza/minio/latest/docs)
+- **Terraform Documentation**: [Terraform Official Documentation](https://www.terraform.io/docs)
+- **Docker Compose**: [Docker Compose Documentation](https://docs.docker.com/compose/)
+
+---
+
 ### Author
 **Prashant Jeet Singh** – DevOps Learner  
 _This project was built as part of a personal hands-on journey with Terraform and MinIO. This project is created for Terraform practice and learning purposes._
 
 ---
-
-### References
-- **MinIO Documentation**: [MinIO Provider Documentation](https://registry.terraform.io/providers/aminueza/minio/latest/docs)
-- **Terraform Documentation**: [Terraform Official Documentation](https://www.terraform.io/docs)
-- **Docker Compose**: [Docker Compose Documentation](https://docs.docker.com/compose/)

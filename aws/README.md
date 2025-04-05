@@ -95,12 +95,14 @@ bash delete_vpc.sh
 
 ---
 
+### References
+- **AWS Course Playlist:** [AWS Projects - YouTube](https://youtube.com/playlist?list=PLdpzxOOAlwvLNOxX0RfndiYSt1Le9azze&si=iHn7rWgUDeXbOrd8)
+- **AWS Exercise:** [AWS Exercise](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-example-private-subnets-nat.html)
+- **AWS Exercise Practical:** [AWS Exercise Practical](https://www.youtube.com/watch?v=FZPTL_kNvXc&t=1799s&ab_channel=Abhishek.Veeramalla)
+
+---
+
 ### Author
 
 **Prashant Jeet Singh** – DevOps Learner  
 _This project was built as part of a personal hands-on journey with AWS and Bash scripting. This project is created for Terraform practice and learning purposes._
-
----
-
-### References
-- **AWS Course Playlist:** [AWS Projects - YouTube](https://youtube.com/playlist?list=PLdpzxOOAlwvLNOxX0RfndiYSt1Le9azze&si=iHn7rWgUDeXbOrd8)

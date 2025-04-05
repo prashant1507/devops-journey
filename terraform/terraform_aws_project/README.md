@@ -226,13 +226,6 @@ This repository provides a structured approach to deploying AWS infrastructure u
 
 ---
 
-### Author
-
-**Prashant Jeet Singh** – DevOps Learner  
-_This project was built as part of a personal hands-on journey with Terraform and AWS. This project is created for Terraform practice and learning purposes._
-
----
-
 ### References
 - **Terraform Course Playlist:** [Terraform Zero to Hero - YouTube](https://youtube.com/playlist?list=PLdpzxOOAlwvI0O4PeKVV1-yJoX2AqIWuf&si=Yv0N00EHJc0FAaCT)
 - **Course Git Notes:** [Terraform Zero to Hero - GitHub](https://github.com/iam-veeramalla/terraform-zero-to-hero)
@@ -241,3 +234,11 @@ _This project was built as part of a personal hands-on journey with Terraform an
 - **Terraform Language Documentation:** [Terraform Language](https://developer.hashicorp.com/terraform/language)
 - **AWS Course Playlist:** [AWS Projects - YouTube](https://youtube.com/playlist?list=PLdpzxOOAlwvLNOxX0RfndiYSt1Le9azze&si=iHn7rWgUDeXbOrd8)
 
+---
+
+### Author
+
+**Prashant Jeet Singh** – DevOps Learner  
+_This project was built as part of a personal hands-on journey with Terraform and AWS. This project is created for Terraform practice and learning purposes._
+
+---
