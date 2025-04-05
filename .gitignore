@@ -7,7 +7,7 @@ terraform/*/.terraform.tfstate.lock.info
 .DS_Store
 terraform/*/resources/dummy-file-from-s3.txt
 .idea
-*delete*
+*delete-me*
 terraform/*/resources/dummy-file-from-minio.txt
 *.venv
 *.python-version

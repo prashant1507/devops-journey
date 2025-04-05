@@ -227,7 +227,9 @@ This repository provides a structured approach to deploying AWS infrastructure u
 ---
 
 ### Author
-This project is created for Terraform practice and learning purposes.
+
+**Prashant Jeet Singh** – DevOps Learner  
+_This project was built as part of a personal hands-on journey with Terraform and AWS. This project is created for Terraform practice and learning purposes._
 
 ---
 

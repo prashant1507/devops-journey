@@ -127,7 +127,8 @@ This repository provides a structured approach to managing MinIO resources using
 ---
 
 ### Author
-This project is created for Terraform practice and learning purposes.
+**Prashant Jeet Singh** – DevOps Learner  
+_This project was built as part of a personal hands-on journey with Terraform and MinIO. This project is created for Terraform practice and learning purposes._
 
 ---
 
