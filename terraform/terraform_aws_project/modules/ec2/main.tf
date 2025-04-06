@@ -47,7 +47,7 @@ resource "aws_instance" "ec2_instance" {
 # Elastic IP (Optional, Paid Service)
 # Uncomment the following resources if you want to use an Elastic IP.
 
-# Create an Elastic IP Address
+# # Create an Elastic IP Address
 # resource "aws_eip" "elastic_ip" {
 #   domain = "vpc"  # Required for VPC-based EIPs
 #   tags = {
