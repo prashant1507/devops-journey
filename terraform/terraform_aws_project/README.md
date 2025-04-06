@@ -75,6 +75,7 @@ terraform_aws_project/
    ```sh
    terraform init
    ```
+
 ---
 
 ### Using Terraform Workspaces
@@ -203,12 +204,19 @@ terraform destroy # Destroy resources
 
 ### Notes
 - Refer Useful Notes and Info: [Useful Info and Questions](resources/Notes.md)
-- Refer use cases: [Use_Cases.md](resources/Use_Cases.md)
+- Refer Use Cases: [Use_Cases.md](resources/Use_Cases.md)
 - Offline Terraform Setup: [Offline-Terraform-Deployment](resources/Offline-Terraform-Deployment.md)
 - Terraform Import related questions, use cases, hands-on: [Terraform-Imports](resources/Notes-Terraform-Import.md)
 - Modify `terraform.tfvars` for specific configurations.
-- Uncomment `backend` in `main.tf -> terraform` to store tfstate file in S3
-   - Follow [link](https://spacelift.io/blog/terraform-s3-backend) to setup bucket and dynamodb_table in AWS
+- To create multiple EC2 instances the set count = X in [main.tf](main.tf)
+   - If count is greater than 1, then uncomment `locals` in [modules/ec2/main.tf](modules/ec2/main.tf)
+- Uncomment `backend` in `main.tf -> terraform` to store `tfstate` file in S3
+   - Follow [link](https://spacelift.io/blog/terraform-s3-backend) to set up bucket and dynamodb_table in AWS
+- By default, public IP will be assigned to Ec2 instance. To disable comment
+  - `aws_eip.elastic_ip` and `aws_eip_association.associate_elastic_ip` in [modules/ec2/main.tf](modules/ec2/main.tf)
+  - `ec2_ip` in [modules/ec2/outputs.tf](modules/ec2/outputs.tf)
+  - `ec2_ip` in [outputs.tf](outputs.tf)
+
 - AMI used as below:
    - dev: ami-084568db4383264d4
       - Ubuntu Server 24.04 LTS (HVM), SSD Volume Type

@@ -51,17 +51,17 @@ resource "aws_instance" "ec2_instance" {
 # Elastic IP (Optional, Paid Service)
 # Uncomment the following resources if you want to use an Elastic IP.
 
-# # Create an Elastic IP Address
-# resource "aws_eip" "elastic_ip" {
-#   domain = "vpc"  # Required for VPC-based EIPs
-#   tags = {
-#     Name = "elastic-ip"
-#   }
-# }
+# Create an Elastic IP Address
+resource "aws_eip" "elastic_ip" {
+  domain = "vpc"  # Required for VPC-based EIPs
+  tags = {
+    Name = "elastic-ip"
+  }
+}
 
-# # Associate the Elastic IP Address with the EC2 Instance
-# resource "aws_eip_association" "associate_elastic_ip" {
-#   instance_id   = aws_instance.ec2_instance.id
-#   allocation_id = aws_eip.elastic_ip.id
-#   depends_on    = [aws_eip.elastic_ip]
-# }
+# Associate the Elastic IP Address with the EC2 Instance
+resource "aws_eip_association" "associate_elastic_ip" {
+  instance_id   = aws_instance.ec2_instance.id
+  allocation_id = aws_eip.elastic_ip.id
+  depends_on    = [aws_eip.elastic_ip]
+}
