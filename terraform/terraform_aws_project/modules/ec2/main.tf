@@ -9,6 +9,8 @@ resource "random_string" "suffix" {
 locals {
   # instance_name = "ec2-instance-${random_string.suffix.result}"
   # key_name = "${local.instance_name}-pkey"
+
+  ## This will support only count = 1 from ./terraform_aws_project/main.tf
   instance_name = "ec2-instance"
   key_name = "${local.instance_name}-pkey"
 }
