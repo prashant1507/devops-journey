@@ -19,7 +19,7 @@
 ---
 
 ### Overview
-This repository contains Terraform configurations to provision and manage AWS resources using Infrastructure as Code (IaC). The project is structured into multiple modules including VPC, EC2, S3, IAM, and Load Balancing, making it easy to manage and scale AWS infrastructure. This also elloborates usage of remote backends to allow Terraform's state file to be stored remotely
+This repository contains Terraform configurations to provision and manage AWS resources using Infrastructure as Code (IaC). The project is structured into multiple modules including VPC, EC2, S3, IAM, and Load Balancing, making it easy to manage and scale AWS infrastructure. This also elaborates usage of remote backends to allow Terraform state file to be stored remotely
 
 ---
 
