@@ -16,7 +16,6 @@ output "ec2_id" {
   depends_on  = [module.ec2]
 }
 
-# Get public IP address of the EC2 instance
 output "ec2_ip" {
   value       = [for instance in module.ec2 : instance.ec2_ip]
   description = "The public IP address of the created EC2 instance."
