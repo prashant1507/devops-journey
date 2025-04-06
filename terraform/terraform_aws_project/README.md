@@ -212,10 +212,10 @@ terraform destroy # Destroy resources
    - If count is greater than 1, then uncomment `locals` in [modules/ec2/main.tf](modules/ec2/main.tf)
 - Uncomment `backend` in `main.tf -> terraform` to store `tfstate` file in S3
    - Follow [link](https://spacelift.io/blog/terraform-s3-backend) to set up bucket and dynamodb_table in AWS
-- By default, public IP will be assigned to Ec2 instance. To disable comment
-  - `aws_eip.elastic_ip` and `aws_eip_association.associate_elastic_ip` in [modules/ec2/main.tf](modules/ec2/main.tf)
-  - `ec2_ip` in [modules/ec2/outputs.tf](modules/ec2/outputs.tf)
-  - `ec2_ip` in [outputs.tf](outputs.tf)
+- By default, public IP will not be assigned to ec2 instance. To enable set
+  - `associate_public_ip_address to true` in [main.tf](main.tf)
+- By default, elastic IP will not be assigned to ec2 instance. To enable set
+  - `create_and_associate_eip to true` in [main.tf](main.tf)
 
 - AMI used as below:
    - dev: ami-084568db4383264d4

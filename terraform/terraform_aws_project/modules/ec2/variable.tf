@@ -22,3 +22,13 @@ variable "subnet_id" {
   description = "The ID of the subnet where the EC2 instance will be launched."
   type        = string
 }
+
+variable "associate_public_ip_address" {
+  description = "Assign public IP to ec2 instance"
+  type = bool
+}
+
+variable "create_and_associate_eip" {
+  description = "Create and associate public ip to ec2"
+  type = bool
+}

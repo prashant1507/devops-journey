@@ -36,7 +36,7 @@ resource "aws_instance" "ec2_instance" {
   key_name                    = local.key_name
   subnet_id                   = var.subnet_id
   vpc_security_group_ids      = [var.security_group_id]
-  associate_public_ip_address = false  # Disable public IP association
+  associate_public_ip_address = var.associate_public_ip_address  # Disable public IP association
 
   tags = {
     Name = local.instance_name
@@ -47,6 +47,7 @@ resource "aws_instance" "ec2_instance" {
 # Elastic IP (Optional, Paid Service). Uncomment the following resources if you want to use an Elastic IP.
 # Create an Elastic IP Address
 resource "aws_eip" "elastic_ip" {
+  count = var.create_and_associate_eip ? 1 : 0 # Will create elastic ip if true
   domain = "vpc"  # Required for VPC-based EIPs
   tags = {
     Name = local.eip
@@ -55,7 +56,8 @@ resource "aws_eip" "elastic_ip" {
 
 # Associate the Elastic IP Address with the EC2 Instance
 resource "aws_eip_association" "associate_elastic_ip" {
+  count = var.create_and_associate_eip ? 1 : 0 # Will associate elastic ip if true
   instance_id   = aws_instance.ec2_instance.id
-  allocation_id = aws_eip.elastic_ip.id
+  allocation_id = aws_eip.elastic_ip[0].id
   depends_on    = [aws_eip.elastic_ip]
 }

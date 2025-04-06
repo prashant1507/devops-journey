@@ -4,6 +4,6 @@ output "ec2_id" {
 }
 
 output "ec2_ip" {
-  value = aws_eip.elastic_ip.public_ip
+  value = length(aws_eip.elastic_ip) > 0 ? aws_eip.elastic_ip[0].public_ip : var.create_and_associate_eip
   description = "The public IP address of the created EC2 instance."
 }
