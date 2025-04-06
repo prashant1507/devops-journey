@@ -7,7 +7,9 @@ resource "random_string" "suffix" {
 
 # Local Variable for Instance Tag
 locals {
-  instance_name = "ec2-instance-${random_string.suffix.result}"
+  # instance_name = "ec2-instance-${random_string.suffix.result}"
+  # key_name = "${local.instance_name}-pkey"
+  instance_name = "ec2-instance"
   key_name = "${local.instance_name}-pkey"
 }
 
