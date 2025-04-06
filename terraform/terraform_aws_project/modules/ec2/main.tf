@@ -8,11 +8,9 @@ resource "random_string" "suffix" {
 # Local Variable for Instance Tag
 locals {
   # instance_name = "ec2-instance-${random_string.suffix.result}"
-  # key_name = "${local.instance_name}-pkey"
-
-  ## This will support only count = 1 from ./terraform_aws_project/main.tf
-  instance_name = "ec2-instance"
+  instance_name = "ec2-instance" # This will support only count = 1 from ./terraform_aws_project/main.tf
   key_name = "${local.instance_name}-pkey"
+  eip = "${local.instance_name}-eip"
 }
 
 # Generate an SSH Private Key
@@ -25,8 +23,7 @@ resource "tls_private_key" "private_key" {
 resource "aws_key_pair" "key_pair" {
   key_name   = local.key_name
   public_key = tls_private_key.private_key.public_key_openssh
-  # Uncomment the following line to use a public key from a file instead:
-  # public_key = file(var.public_key_path)
+  # public_key = file(var.public_key_path) # Uncomment the following line to use a public key from a file instead
   tags = {
     Name = local.key_name
   }
@@ -44,18 +41,15 @@ resource "aws_instance" "ec2_instance" {
   tags = {
     Name = local.instance_name
   }
-
   depends_on = [aws_key_pair.key_pair]
 }
 
-# Elastic IP (Optional, Paid Service)
-# Uncomment the following resources if you want to use an Elastic IP.
-
+# Elastic IP (Optional, Paid Service). Uncomment the following resources if you want to use an Elastic IP.
 # Create an Elastic IP Address
 resource "aws_eip" "elastic_ip" {
   domain = "vpc"  # Required for VPC-based EIPs
   tags = {
-    Name = "elastic-ip"
+    Name = local.eip
   }
 }
 
