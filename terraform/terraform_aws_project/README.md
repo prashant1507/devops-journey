@@ -218,13 +218,13 @@ terraform destroy # Destroy resources
   - `create_and_associate_eip to true` in [main.tf](main.tf)
 
 - AMI used as below:
-   - dev: ami-084568db4383264d4
+   - dev: ami-0779caf41f9ba54f0
       - Ubuntu Server 24.04 LTS (HVM), SSD Volume Type
    - stage: ami-0c15e602d3d6c6c4a
       - Red Hat Enterprise Linux version 9 (HVM), EBS General Purpose (SSD) Volume Type,
    - prod: ami-04b7f73ef0b798a0f
       - SUSE Linux Enterprise Server 15 Service Pack 6 (HVM), EBS General Purpose (SSD) Volume Type. Amazon EC2 AMI Tools preinstalled.
-   - default: ami-0779caf41f9ba54f0
+   - default: ami-084568db4383264d4
       - Debian 12 (HVM), EBS General Purpose (SSD) Volume Type. Community developed free GNU/Linux distribution
 
 ---

@@ -125,7 +125,7 @@ resource "aws_route_table" "rt_private_subnet_1b" {
 # Route allow internet access
 resource "aws_route" "route_public_subnet" {
   route_table_id            = aws_route_table.rt_public_subnet.id
-  destination_cidr_block    = "0.0.0.0/22"
+  destination_cidr_block    = "0.0.0.0/0"
   gateway_id                = aws_internet_gateway.igw.id
 }
 
@@ -169,4 +169,13 @@ resource "aws_vpc_endpoint_route_table_association" "vpc_endpoint_association_1a
 resource "aws_vpc_endpoint_route_table_association" "vpc_endpoint_association_1b" {
   vpc_endpoint_id = aws_vpc_endpoint.vpc_endpoint_s3.id
   route_table_id  = aws_route_table.rt_private_subnet_1b.id
+}
+
+resource "aws_network_interface" "eni_public_1a" {
+  subnet_id       = aws_subnet.public_subnet_1a.id
+  security_groups = [aws_security_group.security_group.id]
+
+  tags = {
+    Name = "eni-public-1a"
+  }
 }

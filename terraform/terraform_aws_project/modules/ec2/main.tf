@@ -22,8 +22,8 @@ resource "tls_private_key" "private_key" {
 # Create an SSH Key Pair in AWS
 resource "aws_key_pair" "key_pair" {
   key_name   = local.key_name
-  public_key = tls_private_key.private_key.public_key_openssh
-  # public_key = file(var.public_key_path) # Uncomment the following line to use a public key from a file instead
+  # public_key = tls_private_key.private_key.public_key_openssh # Uncomment the following line to generate new key pair
+  public_key = file(var.public_key_path) 
   tags = {
     Name = local.key_name
   }

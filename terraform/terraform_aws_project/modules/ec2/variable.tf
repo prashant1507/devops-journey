@@ -32,3 +32,14 @@ variable "create_and_associate_eip" {
   description = "Create and associate public ip to ec2"
   type = bool
 }
+
+variable "public_key_path" {
+  description = "Path to the public key file for SSH access."
+  type        = string
+  default     = "~/.ssh/id_rsa.pub"
+  validation {
+    condition     = fileexists(var.public_key_path)
+    error_message = "The public key file does not exist at the specified path."
+  }
+  sensitive = true
+}
