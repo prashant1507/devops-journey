@@ -95,11 +95,19 @@ bash delete_vpc.sh
 
 ---
 
+### Notes
+- Boto3 for Python Script for AWS Automation
+- Get security credentials (Login to AWS -> Profile -> Security Credentials -> Access Keys -> Create Key)
+
+---
+
 ### References
 - **AWS Course Playlist:** [AWS Projects - YouTube](https://youtube.com/playlist?list=PLdpzxOOAlwvLNOxX0RfndiYSt1Le9azze&si=iHn7rWgUDeXbOrd8)
 - **AWS Exercise:** [AWS Exercise](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-example-private-subnets-nat.html)
 - **AWS Exercise Practical:** [AWS Exercise Practical](https://www.youtube.com/watch?v=FZPTL_kNvXc&t=1799s&ab_channel=Abhishek.Veeramalla)
-
+- **Boto3 Documentation:** [Boto3 Doc](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
+- https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html
+- https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html
 ---
 
 ### Author
