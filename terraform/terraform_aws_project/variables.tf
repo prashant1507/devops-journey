@@ -19,3 +19,8 @@ variable "environment_type" {
     "prod"  = "ami-04b7f73ef0b798a0f" # SUSE Linux Enterprise Server 15 Service Pack 6 (HVM), EBS General Purpose (SSD) Volume Type. Amazon EC2 AMI Tools preinstalled.
   }
 }
+
+variable "instance_type" {
+  description = "Instance Type"
+  type        = string
+}
