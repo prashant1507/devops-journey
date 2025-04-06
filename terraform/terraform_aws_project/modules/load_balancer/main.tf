@@ -58,7 +58,7 @@ resource "aws_launch_template" "create_launch_template" {
   # Optional: Add user data for instance initialization
   # user_data = base64encode(<<-EOF
   #   #!/bin/bash
-  #   yum install -y httpd
+  #   apt install -y httpd
   #   systemctl start httpd
   #   systemctl enable httpd
   # EOF
@@ -70,19 +70,19 @@ resource "aws_launch_template" "create_launch_template" {
   }
 }
 
-# # Create an Auto Scaling Group (ASG)
-# resource "aws_autoscaling_group" "create_asg" {
-#   name                = "test-asg"
-#   min_size            = 1
-#   max_size            = 3
-#   desired_capacity    = 1
-#   vpc_zone_identifier = var.private_subnets
-#   health_check_type   = "ELB"
-#   health_check_grace_period = 300
-#   target_group_arns   = [aws_lb_target_group.create_tg.arn]
+# Create an Auto Scaling Group (ASG)
+resource "aws_autoscaling_group" "create_asg" {
+  name                = "test-asg"
+  min_size            = 1
+  max_size            = 3
+  desired_capacity    = 1
+  vpc_zone_identifier = var.private_subnets
+  health_check_type   = "ELB"
+  health_check_grace_period = 300
+  target_group_arns   = [aws_lb_target_group.create_tg.arn]
 
-#   launch_template {
-#     id      = aws_launch_template.create_launch_template.id
-#     version = "$Latest"
-#   }
-# }
+  launch_template {
+    id      = aws_launch_template.create_launch_template.id
+    version = "$Latest"
+  }
+}
