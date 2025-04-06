@@ -16,13 +16,11 @@ terraform {
 
 }
 
-# VPC Module
 module "vpc" {
   source    = "./modules/vpc"
   task_name = var.task_name
 }
 
-# EC2 Module
 module "ec2" {
   count             = 1 # create X similar EC2 instances
   source            = "./modules/ec2"
@@ -33,13 +31,11 @@ module "ec2" {
   depends_on        = [module.vpc]
 }
 
-# S3 Module
 module "s3" {
   source      = "./modules/s3"
   bucket_name = "test-bucket"
 }
 
-# IAM Module
 module "iam" {
   source         = "./modules/iam"
   s3_bucket_name = module.s3.s3_bucket_name
@@ -49,13 +45,12 @@ module "iam" {
   depends_on     = [module.s3]
 }
 
-# Load Balancer Module
-module "load_balancer" {
-  source            = "./modules/load_balancer"
-  security_group_id = module.vpc.security_group_id
-  private_subnets   = [module.vpc.private_subnet_1a, module.vpc.private_subnet_1b]
-  vpc_id            = module.vpc.vpc_id
-  ami               = lookup(var.environment_type, terraform.workspace, "ami-0779caf41f9ba54f0")
-  instance_type     = "t2.micro"
-  depends_on        = [module.vpc]
-}
+# module "load_balancer" {
+#   source            = "./modules/load_balancer"
+#   security_group_id = module.vpc.security_group_id
+#   private_subnets   = [module.vpc.private_subnet_1a, module.vpc.private_subnet_1b]
+#   vpc_id            = module.vpc.vpc_id
+#   ami               = lookup(var.environment_type, terraform.workspace, "ami-0779caf41f9ba54f0")
+#   instance_type     = "t2.micro"
+#   depends_on        = [module.vpc]
+# }
