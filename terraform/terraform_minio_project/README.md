@@ -42,6 +42,9 @@ terraform_minio_project/
 
 ### Prerequisites
 1. **Install MinIO using [docker-compose](resources/docker-compose-minio.yml) if not running**
+    ```sh
+        docker-compose -f docker-compose-minio.yml up -d
+    ```
 
 2. **Set Up MinIO Access Key and Secret Key**
     ```sh
