@@ -556,3 +556,96 @@ resource "aws_codepipeline" "pipeline" {
 **Explanation:**  
 - This configuration sets up a CI/CD pipeline using AWS CodePipeline, with a CodeCommit repository as the source, CodeBuild for building the application, and CodeDeploy for deploying it. The pipeline automates the process of deploying changes to your application.
 
+---
+
+### **10. Use a case for Terraform import**
+#### Use Case: Managing VM State with Terraform and Detecting Drift
+#### Scenario Overview
+
+In this scenario, will demonstrate how to:
+
+1. Provision a Virtual Machine (VM) with 2 GB RAM using Terraform.
+2. Manually update the VM’s RAM to 4 GB via the WAS UI.
+3. Use Terraform to detect the configuration drift, import the actual state, and update the Terraform state file accordingly.
+
+#### Step 1: Create a VM with 2 GB RAM Using Terraform
+
+**Terraform Configuration (`main.tf`)**:
+
+```hcl
+resource "was_vm" "example_vm" {
+  name     = "my-vm"
+  ram      = 2048 # in MB
+  cpu      = 2
+  image_id = "ubuntu-22.04"
+}
+```
+
+**Commands:**
+
+```bash
+terraform init
+terraform apply
+```
+
+This creates a VM in WAS with **2 GB RAM**.
+
+---
+
+#### Step 2: Manual Update via AWS UI
+
+- Navigate to the VM in the **AWS UI**.
+- Edit the VM settings.
+- **Change the RAM from 2 GB (2048 MB) to 4 GB (4096 MB)**.
+- Save the changes.
+
+This introduces **drift** between the Terraform configuration and the actual infrastructure.
+
+---
+
+#### Step 3: Detect & Sync Drift with Terraform
+##### Option 1: **Detect Drift with Terraform Plan**
+
+```bash
+terraform plan
+```
+
+Output shows a drift:
+
+```hcl
+~ ram = 2048 -> 4096
+```
+
+Terraform notices the change but will try to revert it unless handled.
+
+##### Option 2: **Import Current State and Update Configuration**
+
+If the VM was not initially created by Terraform or has diverged too far:
+
+```bash
+terraform import was_vm.example_vm <vm-id>
+```
+
+This will sync the resource to Terraform’s state file.
+
+Update your Terraform config to match:
+
+```hcl
+resource "was_vm" "example_vm" {
+  name     = "my-vm"
+  ram      = 4096
+  cpu      = 2
+  image_id = "ubuntu-22.04"
+}
+```
+
+Then run:
+
+```bash
+terraform plan
+terraform apply
+```
+
+Now your Terraform code reflects the actual infrastructure state in WAS.
+
+---
