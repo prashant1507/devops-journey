@@ -110,7 +110,29 @@ bash delete_vpc.sh
 - https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html
 ---
 
-### Author
+### Major Topics
+- IAM (Identity and Access Management): Users, Groups, Policies, Roles
+- EC2 (Elastic Compute Cloud)
+- VPC (Virtual Private Cloud)
+- Security Groups
+- NACL (Network Access Control Lists)
+- Route 53
+- S3 (Simple Storage Service) 
+- AWS CLI
+- AWS CFT (AWS CloudFormation) (Infrastructure as Code) --- SKIP will use Terraform
+    - Used JSON/Yaml to define and provision AWS resources
+- AWS CICD: AWS CodeCommit, AWS Code Pipeline, AWS CodeBuild, AWS CodeDeploy
+    - Codecommit is like GIT
+    - Code Pipeline is like Jenkins
+    - CodeBuild is like Maven build
+    - CodeDeploy is like Argo Deploy
+- AWS Load Balancer
+- Lamda (Serverless Architecture)
+- Secret Management
+- Cost Optimization
 
+---
+
+### Author
 **Prashant Jeet Singh** – DevOps Learner  
 _This project was built as part of a personal hands-on journey with AWS and Bash scripting. This project is created for Terraform practice and learning purposes._
