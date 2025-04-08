@@ -41,23 +41,25 @@ terraform_minio_project/
 ---
 
 ### Prerequisites
-1. **Set Up MinIO Access Key and Secret Key**
+1. **Install MinIO using [docker-compose](resources/docker-compose-minio.yml) if not running**
+
+2. **Set Up MinIO Access Key and Secret Key**
     ```sh
     mc alias set <ALIAS> <URL> <ACCESS_KEY> <SECRET_KEY> # Set MinIO Alias
     mc admin user add <ALIAS> <USERNAME> <PASSWORD>      # Create a new user with a password
     mc admin policy attach local readwrite --user=<USERNAME> # Assign Read/Write Policy
     ```
 
-2. **Provide `minio_url` in `terraform.tfvars`**
+3. **Provide `minio_url` in `terraform.tfvars`**
     - Example:
       ```hcl
       minio_url = "http://localhost:9000"
       ```
 
-3. **Install Terraform**
+4. **Install Terraform**
     - Ensure Terraform is installed on your system. You can download it from [Terraform Downloads](https://www.terraform.io/downloads).
 
-4. **Run MinIO Locally (Optional)**
+5. **Run MinIO Locally (Optional)**
     - Use the provided `docker-compose-minio.yml` file to run MinIO locally:
       ```sh
       docker-compose -f resources/docker-compose-minio.yml up -d
