@@ -10,6 +10,17 @@ variable "aws_region" {
   default     = "us-east-1" # Default region if not provided in terraform.tfvars
 }
 
+variable "instance_type" {
+  description = "Instance Type"
+  type        = string
+}
+
+variable "debian" {
+  description = "Debian 12"
+  type = string
+  default = "ami-084568db4383264d4"
+}
+
 variable "environment_type" {
   description = "Environment: dev, stage, prod"
   type        = map(string)
@@ -18,9 +29,4 @@ variable "environment_type" {
     "stage" = "ami-0c15e602d3d6c6c4a" # Red Hat Enterprise Linux version 9 (HVM), EBS General Purpose (SSD) Volume Type,
     "prod"  = "ami-04b7f73ef0b798a0f" # SUSE Linux Enterprise Server 15 Service Pack 6 (HVM), EBS General Purpose (SSD) Volume Type. Amazon EC2 AMI Tools preinstalled.
   }
-}
-
-variable "instance_type" {
-  description = "Instance Type"
-  type        = string
 }

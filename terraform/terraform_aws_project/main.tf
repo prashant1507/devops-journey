@@ -24,7 +24,7 @@ module "vpc" {
 module "ec2" {
   count                       = 1 # create X similar EC2 instances
   source                      = "./modules/ec2"
-  ami                         = lookup(var.environment_type, terraform.workspace, "ami-084568db4383264d4")
+  ami                         = lookup(var.environment_type, terraform.workspace, var.debian)
   instance_type               = var.instance_type
   security_group_id           = module.vpc.security_group_id
   subnet_id                   = module.vpc.public_subnet_1a
@@ -52,7 +52,7 @@ module "iam" {
 #   security_group_id = module.vpc.security_group_id
 #   private_subnets   = [module.vpc.private_subnet_1a, module.vpc.private_subnet_1b]
 #   vpc_id            = module.vpc.vpc_id
-#   ami               = lookup(var.environment_type, terraform.workspace, "ami-0779caf41f9ba54f0")
+#   ami               = lookup(var.environment_type, terraform.workspace, var.debian)
 #   instance_type     = var.instance_type
 #   depends_on        = [module.vpc]
 # }
