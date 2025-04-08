@@ -1,0 +1,18 @@
+packages_to_install:
+  - vim
+  - git
+  - net-tools
+  - curl
+  - npm
+docker_package: docker.io
+
+host_website: false
+github_website: https://github.com/ssunils/urbio-blog.git
+
+minio: true
+minio_host: localhost
+minio_port: 9000
+bucket_name: my-bucket
+
+install_packages: false
+uninstall_packages: false

@@ -1,0 +1,28 @@
+---
+
+- name: Executing Role | {{ role_name }}
+  ansible.builtin.debug:
+    msg: "Executing Role | {{ role_name }}"
+    
+- name: Ping
+  ping:
+
+- name: Run Update
+  become: true
+  ansible.builtin.apt:
+    update_cache: yes
+
+- name: Install Packages | {{ packages_to_install }}
+  become: true
+  ansible.builtin.apt:
+    name: "{{ packages_to_install }}"
+    state: present
+
+- name: Install Docker Service
+  become: true
+  ansible.builtin.apt:
+    name: "{{ docker_package }}"
+    state: latest
+  # notify: Start Docker
+
+# - meta: flush_handlers

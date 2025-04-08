@@ -1,0 +1,43 @@
+---
+- name: Install Packages
+  hosts: frontend
+  gather_facts: true
+  strategy: free
+  vars_files:
+    - vars/main.yml
+  roles:
+    - role: install_packages
+      when: install_packages | bool
+  
+- name: Host a Website
+  hosts: frontend
+  gather_facts: false
+  vars_files:
+    - vars/main.yml
+  vars:
+    folder: /home/user/urbio-blog
+  roles:
+    - role: host_website
+      when: host_website | bool
+
+- name: MinIO Hands-On Lab
+  hosts: localhost
+  gather_facts: false
+  vars_files:
+    - vars/main.yml
+  vars:
+    bucket_name: bucket_name
+  roles:
+    - role: minio
+      when: minio | bool
+
+
+- name: Uninstall Packages
+  hosts: frontend
+  gather_facts: false
+  strategy: free
+  vars_files:
+    - vars/main.yml
+  roles:
+    - role: uninstall_packages
+      when: uninstall_packages | bool

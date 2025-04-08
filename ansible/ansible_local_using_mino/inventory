@@ -1,0 +1,15 @@
+[frontend]
+192.168.0.83
+
+[backend]
+192.168.0.84
+
+[db]
+192.168.0.85
+
+[all:vars]
+ansible_user=user
+ansible_python_interpreter=/usr/bin/python3
+ansible_become_user=root
+ansible_become_password=password
+ansible_become_method=sudo

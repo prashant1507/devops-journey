@@ -1,0 +1,42 @@
+---
+
+- name: Executing Role | {{ role_name }}
+  ansible.builtin.debug:
+    msg: "Executing Role | {{ role_name }}"
+
+- name: Uninstall Packages | {{ packages_to_install }}
+  become: true
+  ansible.builtin.apt:
+    name: "{{ packages_to_install }}"
+    state: absent
+  when: packages_to_install is defined and packages_to_install | length > 0
+  tags: uninstall_packages
+
+- name: Stop Docker Service
+  become: true
+  ansible.builtin.service:
+    name: docker.service
+    state: stopped
+
+- name: Uninstall Docker Service
+  become: true
+  ansible.builtin.apt:
+    name: "{{ docker_package }}"
+    state: absent
+  when: docker_package is defined and docker_package | length > 0
+
+- name: Check if Docker is uninstalled
+  ansible.builtin.command:
+    cmd: docker --version
+  register: docker_uninstalled_status
+  ignore_errors: true
+
+- name: Verify if Docker is Uninstalled
+  ansible.builtin.debug:
+    msg: "Docker is uninstalled successfully."
+  when: docker_uninstalled_status.rc != 0
+    
+- name: Print Docker Uninstall Command Register
+  ansible.builtin.debug:
+    msg: "{{ docker_uninstalled_status  }}"
+  when: docker_uninstalled_status.rc == 0

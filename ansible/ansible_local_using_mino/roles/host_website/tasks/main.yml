@@ -1,0 +1,41 @@
+---
+
+- name: Clone project from GitHub
+  git:
+    repo: "{{ github_website }}"
+    dest: "{{ folder }}"
+    version: main
+
+# This is equivalent to 'cd /opt/your-app && npm install'
+- name: Install npm packages "{{ folder }}"
+  community.general.npm:
+    path: "{{ folder }}"
+    production: no
+
+- name: Install pm2 globally
+  become: true
+  community.general.npm:
+    name: pm2
+    global: true
+
+- name: Start the dev server using pm2
+  ansible.builtin.shell: |
+    pm2 start npm --name "urbio-blog-dev" -- run dev
+  args:
+    chdir: "{{ folder }}"
+
+- name: Wait for the dev server to initialize
+  ansible.builtin.wait_for:
+    timeout: 30
+
+- name: Check if pm2 started the website
+  ansible.builtin.shell: pm2 list
+  register: pm2_status
+
+
+- name: Stop and delete the pm2 process
+  ansible.builtin.shell: |
+    pm2 stop urbio-blog-dev || true
+    pm2 delete urbio-blog-dev || true
+  when: pm2_status.stdout_lines | select('search', 'urbio-blog') | list | length > 0
+
