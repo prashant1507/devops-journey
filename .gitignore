@@ -13,3 +13,4 @@ terraform/*/resources/dummy-file-from-minio.txt
 *.python-version
 *uv.lock
 .vscode/settings.json
+*ansible.log

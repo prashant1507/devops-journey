@@ -10,6 +10,7 @@
    - [EC2 Module](#ec2-module)
    - [S3 Module](#s3-module)
    - [IAM Module](#iam-module)
+   - [Load Balancer Module](#load-balancer-module)
 6. [Running Terraform](#running-terraform)
 7. [Notes](#notes)
 8. [Conclusion](#conclusion)

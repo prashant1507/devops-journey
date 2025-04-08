@@ -3,10 +3,13 @@
 This repository documents my hands-on learning in DevOps. It contains practical exercises on various tools and technologies, including:  
 
 <!-- - **Cloud Provider / Infrastructure as a Service (IaaS): AWS (Amazon Web Services)**   -->
-- **Infrastructure as Code (IaC): Terraform**
-    - **[AWS](aws/)**
-    - **[Terraform using AWS](terraform/terraform_aws_project/)**
-    - **[Terraform using MinIO](terraform/terraform_minio_project/)**
+- **Cloud Provider / Infrastructure as a Service (IaaS): [AWS](aws/)**
+- **Infrastructure as Code (IaC): [Terraform](terraform)**
+    - **[Terraform AWS](terraform/terraform_aws_project/)**
+    - **[Terraform MinIO](terraform/terraform_minio_project/)**
+- **Configuration Management Tool: [Ansible](ansible)**
+    - **[Ansible Local execution, host website and minIO tasks](ansible/ansible_local_using_mino)**
+    
     <!-- - **[Terraform using VSphere](terraform/terraform_with_vsphere/)** -->
 <!-- - **Ansible** -->
 - **More to come!**  
