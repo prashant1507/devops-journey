@@ -36,7 +36,7 @@ This project automates:
 
 ```
 ├── ansible.cfg
-├── inventory
+├── local_inventory
 ├── main.yml
 ├── README.md
 ├── requirements.yml
@@ -104,11 +104,11 @@ This project automates:
 
 - With vault password:
   ```bash
-  ansible-playbook main.yml --ask-vault-password
+  ansible-playbook -i local_inventory main.yml --ask-vault-password
   ```
 - Without vault password:
   ```bash
-  ansible-playbook main.yml
+  ansible-playbook -i local_inventory main.yml
   ```
 
 ---
