@@ -1,0 +1,31 @@
+---
+- name: Create bucket | {{ bucket_name }}
+  amazon.aws.s3_bucket:
+    name: "{{ bucket_name }}"
+    state: present
+    endpoint_url: "http://{{ minio_host }}:{{ minio_port }}"
+    access_key: "{{ minio_access_key }}"
+    secret_key: "{{ minio_secret_key }}"
+    region: us-east-1
+    validate_certs: false
+
+# - name: Add object in bucket
+#   amazon.aws.s3_object:
+#     bucket: "{{ bucket_name }}"
+#     endpoint_url: "http://{{ minio_host }}:{{ minio_port }}"
+#     access_key: "{{ minio_access_key }}"
+#     secret_key: "{{ minio_secret_key }}"
+#     object: index.html
+#     src: /Users/prashant/Desktop/workspace/vs_code/devops_journey/ansible/ansible_local_using_mino/resources/index.html
+#     mode: put
+#     validate_certs: false
+#     region: us-east-1
+
+- name: Delete bucket | {{ bucket_name }}
+  amazon.aws.s3_bucket:
+    name: "{{ bucket_name }}"
+    endpoint_url: "http://{{ minio_host }}:{{ minio_port }}"
+    state: absent
+    force: true
+    access_key: "{{ minio_access_key }}"
+    secret_key: "{{ minio_secret_key }}"
