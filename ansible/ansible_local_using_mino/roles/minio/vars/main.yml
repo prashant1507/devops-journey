@@ -1,0 +1,4 @@
+---
+role_name: MinIO
+minio_access_key: admin
+minio_secret_key: password
