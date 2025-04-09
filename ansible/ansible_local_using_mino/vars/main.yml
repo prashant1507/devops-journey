@@ -6,13 +6,19 @@ packages_to_install:
   - npm
 docker_package: docker.io
 
+# False to skip  install_packages role
+install_packages: false
+
+# False to skip  host_website role
 host_website: false
 github_website: https://github.com/ssunils/urbio-blog.git
 
+
+# False to skip  mino role
 minio: true
 minio_host: localhost
 minio_port: 9000
 bucket_name: my-bucket
 
-install_packages: false
+# False to skip uninstall_packages role
 uninstall_packages: false
