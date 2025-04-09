@@ -13,6 +13,8 @@ This repository provides a structured approach to writing and running Ansible pl
 - [Running the Playbook](#running-the-playbook)
 - [Roles Overview](#roles-overview)
 - [Useful Commands](#useful-commands)
+- [Notes](#notes)
+- [Question](#questions)
 - [Conclusion](#conclusion)
 - [Reference Links](#reference-links)
 - [Author](#author)
@@ -164,6 +166,66 @@ ansible-inventory      # View inventory
 ansible-pull           # Pull and run playbook from VCS
 ansible-vault          # Encrypt/decrypt files
 ```
+
+---
+
+### Notes
+
+- To print all gathered Ansible facts for a host (useful for debugging or dynamic variable usage), add the following task in any play:
+
+  ```yaml
+  - name: Print all ansible facts
+    ansible.builtin.debug:
+      var: ansible_facts
+  ```
+
+---
+
+### Questions
+
+### What is a Control Node and Managed Node?
+- **Control Node**: The machine where Ansible is installed and playbooks are executed from.
+- **Managed Node**: The target machine(s) that Ansible manages. Ansible connects via SSH to configure or deploy to them.
+
+### What are the prerequisites for Managed Nodes?
+- The **managed nodes must have Python installed**, since Ansible modules run via Python by default.
+- You do **not** need to install Ansible on managed nodes.
+- Ensure passwordless SSH access from the control node to each managed node.
+
+### What is Ansible Galaxy?
+- A **repository for sharing Ansible roles and collections**.
+- You can install third-party or community-created automation code.
+- Example:
+  ```bash
+  ansible-galaxy install -r requirements.yml
+  ```
+
+### What is ansible-vault?
+- A tool to **encrypt sensitive variables/files** (like API keys or passwords).
+- Example:
+  ```bash
+  ansible-vault encrypt roles/minio/vars/main.yml
+  ```
+
+### What is Jinja2 in Ansible?
+- Jinja2 is the **templating engine** used by Ansible to evaluate variables and expressions.
+- Example:
+  ```yaml
+  message: "Hello, {{ user_name }}"
+  ```
+
+### How are modules executed?
+- Ansible **copies the required module code to the managed node**, runs it using **Python**, and returns the result.
+- Modules are **not installed** permanently; they're executed as needed.
+
+### What are Handlers in Ansible?
+- Handlers are **tasks triggered only when notified** by another task.
+- They are useful for actions like restarting services **only when changes occur**.
+- Handlers run **at the end** of a play by default, even if multiple tasks notify them.
+- To run them immediately:
+  ```yaml
+  - meta: flush_handlers
+  ```
 
 ---
 
