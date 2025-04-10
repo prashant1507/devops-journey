@@ -8,7 +8,7 @@ This repository documents my hands-on learning in DevOps. It contains practical 
     - **[Terraform AWS](terraform/terraform_aws_project/)**
     - **[Terraform MinIO](terraform/terraform_minio_project/)**
 - **Configuration Management Tool: [Ansible](ansible)**
-    - **[Ansible Local execution, host website and minIO tasks](ansible/ansible_local_using_mino)**
+    - **[Ansible Local execution, host website and minIO tasks](ansible)**
     
     <!-- - **[Terraform using VSphere](terraform/terraform_with_vsphere/)** -->
 <!-- - **Ansible** -->

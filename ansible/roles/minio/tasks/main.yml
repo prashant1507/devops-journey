@@ -16,7 +16,7 @@
 #     access_key: "{{ minio_access_key }}"
 #     secret_key: "{{ minio_secret_key }}"
 #     object: index.html
-#     src: /Users/prashant/Desktop/workspace/vs_code/devops_journey/ansible/ansible_local_using_mino/resources/index.html
+#     src: /Users/prashant/Desktop/workspace/vs_code/devops_journey/ansible/ansible/resources/index.html
 #     mode: put
 #     validate_certs: false
 #     region: us-east-1
