@@ -36,7 +36,7 @@ This project automates:
 
 ```
 ├── ansible.cfg
-├── local_inventory
+├── inventory
 ├── main.yml
 ├── README.md
 ├── requirements.yml
@@ -101,14 +101,14 @@ This project automates:
 ---
 
 ### Running the Playbook
-
+- Set the IP in [inventory](inventory)
 - With vault password:
   ```bash
-  ansible-playbook -i local_inventory main.yml --ask-vault-password
+  ansible-playbook -i inventory main.yml --ask-vault-password
   ```
 - Without vault password:
   ```bash
-  ansible-playbook -i local_inventory main.yml
+  ansible-playbook -i inventory main.yml
   ```
 
 ---
